@@ -1,0 +1,64 @@
+{
+    "tests": [
+        {
+            "test_name": "Service A - Greet World",
+            "service": "service-a",
+            "endpoint": "/greet",
+            "method": "GET",
+            "params": {
+                "name": "World"
+            },
+            "assertions": [
+                {
+                    "source": "status_code",
+                    "comparison": "equals",
+                    "expected_value": 200
+                },
+                {
+                    "source": "body",
+                    "comparison": "equals",
+                    "expected_value": "Hello, World!"
+                }
+            ]
+        },
+        {
+            "test_name": "Service B - Add two numbers",
+            "service": "service-b",
+            "endpoint": "/add",
+            "method": "GET",
+            "params": {
+                "a": 5,
+                "b": 3
+            },
+            "assertions": [
+                {
+                    "source": "status_code",
+                    "comparison": "equals",
+                    "expected_value": 200
+                },
+                {
+                    "source": "body",
+                    "comparison": "equals",
+                    "expected_value": "8"
+                }
+            ]
+        },
+        {
+            "test_name": "Service A - Add with invalid input",
+            "service": "service-a",
+            "endpoint": "/add",
+            "method": "GET",
+            "params": {
+                "a": "foo",
+                "b": "bar"
+            },
+            "assertions": [
+                {
+                    "source": "status_code",
+                    "comparison": "equals",
+                    "expected_value": 400
+                }
+            ]
+        }
+    ]
+}
